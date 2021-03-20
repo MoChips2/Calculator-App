@@ -1,0 +1,17 @@
+button {
+  height: 60px;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 1px solid #c4c4c4;
+  font-size: 20px;
+  color: #333;
+}
+button:hover {
+  background-color: #eaeaea;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+/*# sourceMappingURL=main.css.map */

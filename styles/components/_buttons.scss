@@ -1,0 +1,13 @@
+@use "../variables" as *;
+
+button {
+  height: 60px;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 1px solid #c4c4c4;
+  font-size: 20px;
+  color: $darkGray;
+  &:hover {
+    background-color: #eaeaea;
+  }
+}
