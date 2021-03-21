@@ -2,12 +2,38 @@
 
 button {
   height: 60px;
-  background-color: transparent;
-  border-radius: 3px;
+  background-color: $white;
+  border-radius: 5px;
   border: 1px solid #c4c4c4;
   font-size: 20px;
   color: $darkGray;
   &:hover {
     background-color: #eaeaea;
+  }
+}
+.calc-keys {
+  display: grid;
+  grid-gap: .5em;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 20px;
+}
+.equal {
+  grid-row: 3 / 6;
+  grid-column: 4 / 5;
+  height: 100%;
+  background-color: $darkGray;
+  color: $white;
+  &:hover {
+    background-color: #474747;
+  }
+}
+.plus-minus {
+  grid-area: 2 / 4 / 3 / 5;
+}
+.all-clear {
+  color: $white;
+  background-color: #f52929;
+  &:hover {
+    background-color: #fc4848;
   }
 }
