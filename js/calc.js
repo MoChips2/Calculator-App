@@ -15,19 +15,25 @@ function displayDigit(number) {
 }
 
 function decimal() {
-
-  if (!inputValues.firstNum && !inputValues.operator) {
-    inputValues.firstNum = "0.";
+  const { firstNum, operator, secondNum } = inputValues;
+  if (!firstNum && !operator) {
+    inputValues.firstNum = ".";
     displayDigit(inputValues.firstNum);
-  } else if (!inputValues.firstNum.includes(".")) {
+  } 
+  else if (!firstNum.includes(".") && !operator) {
     inputValues.firstNum += ".";
     displayDigit(inputValues.firstNum);
   }
+  else if (firstNum.includes(".") && !operator) {
+    inputValues.firstNum = "0.";
+    displayDigit(inputValues.firstNum);
+  }
 
-  if (!inputValues.secondNum && inputValues.operator) {
+  else if (!secondNum && operator) {
     inputValues.secondNum = "0.";
     displayDigit(inputValues.secondNum);
-  } else if (inputValues.operator && !inputValues.secondNum.includes(".")) {
+  } 
+  else if (operator && !secondNum.includes(".")) {
     inputValues.secondNum += ".";
     displayDigit(inputValues.secondNum);
   }
@@ -91,6 +97,7 @@ function resetInputValues() {
 // then displays the current input
 button.addEventListener("click", e => {
   const key = e.target.value;
+
   // only store numbers
   if (Number.isInteger(parseFloat(key)) && !inputValues.operator) {
     storeOperations(key);
@@ -113,11 +120,14 @@ button.addEventListener("click", e => {
   //calculate and display answer, then answer is firstNum
   if (key === "=") {
     calculate();
-    displayDigit(answer);
-    inputValues.firstNum = answer;
-    console.log(inputValues);
+    let fixedNum = parseFloat(answer.toFixed(8));
+    console.log(fixedNum);
+    let stringNum = JSON.stringify(fixedNum);
+    inputValues.firstNum = stringNum;
+    displayDigit(stringNum);
   }
 
+  //include decimal in number
   if (key === ".") {
     decimal();
     console.log(inputValues);
