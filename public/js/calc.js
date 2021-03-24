@@ -68,13 +68,14 @@ function storeOperations(value) {
     inputValues.secondNum += value;
   }
 }
+let username = prompt("Please enter your name!");
+if (username != null) {
+  document.getElementById("user").innerHTML = `Hi ${username}!`;
+}
 
 function emitEquation() {
-  if (count < 10) {
-    socket.emit('equation', { inputValues, fixedNum });
+    socket.emit('equation', { username, inputValues, fixedNum });
   }
-  count++;
-}
 
 function calculate() {
   const { firstNum, operator, secondNum } = inputValues;
@@ -127,7 +128,6 @@ button.addEventListener("click", e => {
     if (key === "=") {
       calculate();
       fixedNum = parseFloat(answer.toFixed(8));
-      console.log(inputValues);
       emitEquation();
       resetInputValues();
       let stringNum = JSON.stringify(fixedNum);
