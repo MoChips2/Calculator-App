@@ -13,3 +13,8 @@ Technologies I used to build this website:
     <li>Express</li>
     <li>Socket.io</li>
 </ul>
+
+
+To run this app, clone this githup repository and in your terminal run `npm install` to install required dependencies. Then type `npm start` to start the server, and go to "localhost: 3000" in your browser to run the site locally.
+
+The deployed website is found here: https://powerful-headland-80959.herokuapp.com/
