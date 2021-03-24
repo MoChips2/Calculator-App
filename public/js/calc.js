@@ -1,5 +1,6 @@
 const button = document.querySelector('.calc-keys');
 let answer = 0;
+let fixedNum;
 const inputValues = {
   firstNum: null,
   operator: null,
@@ -67,6 +68,10 @@ function storeOperations(value) {
   }
 }
 
+function emitEquation() {
+  socket.emit('equation', { inputValues, fixedNum });
+}
+
 function calculate() {
   const { firstNum, operator, secondNum } = inputValues;
   const num1 = parseFloat(firstNum);
@@ -84,7 +89,6 @@ function calculate() {
   else if (operator == "/") {
     answer = num1 / num2;
   }
-  resetInputValues();
 }
 
 function resetInputValues() {
@@ -102,26 +106,25 @@ button.addEventListener("click", e => {
   if (Number.isInteger(parseFloat(key)) && !inputValues.operator) {
     storeOperations(key);
     displayDigit(inputValues.firstNum);
-    console.log(inputValues);
   } else if (inputValues.operator) {
     storeOperations(key);
     displayDigit(inputValues.secondNum);
-    console.log(inputValues);
   }
 
   // only store operators
   if (inputValues.firstNum) {
     if (key === '+' || key === '-' || key === '*' || key === '/') {
       storeOperations(key);
-      console.log(inputValues);
     }
   }
 
   //calculate and display answer, then answer is firstNum
   if (key === "=") {
     calculate();
-    let fixedNum = parseFloat(answer.toFixed(8));
+    fixedNum = parseFloat(answer.toFixed(8));
     console.log(fixedNum);
+    emitEquation();
+    resetInputValues();
     let stringNum = JSON.stringify(fixedNum);
     inputValues.firstNum = stringNum;
     displayDigit(stringNum);

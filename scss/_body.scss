@@ -1,0 +1,41 @@
+@use 'variables' as *;
+
+body {
+  background: rgb(24, 23, 23);
+  font-family: 'Orbitron', sans-serif;
+}
+
+header {
+  color: $white;
+  text-align: center;
+  padding: 35px 0;
+}
+
+.message {
+  color: $white;
+  text-align: center;
+}
+
+.message p {
+  padding-bottom: .7em;
+}
+
+.col-md-6 {
+  padding: 1em;
+}
+
+.info {
+  font-size: 21px;
+  padding: 1.5rem;
+  color: $white;
+}
+
+h3 {
+  padding: 1.5rem;
+}
+
+#display-results {
+  font-size: 21px;
+  font-weight: 500;
+  padding-bottom: .5em;
+}

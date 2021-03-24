@@ -8,6 +8,11 @@ html {
   box-sizing: inherit;
 }
 
+p, h1, h3 {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: #181717;
   font-family: "Orbitron", sans-serif;
@@ -16,8 +21,7 @@ body {
 header {
   color: #fff;
   text-align: center;
-  padding: 40px 0;
-  margin-bottom: 32px;
+  padding: 35px 0;
 }
 
 .message {
@@ -25,12 +29,36 @@ header {
   text-align: center;
 }
 
+.message p {
+  padding-bottom: 0.7em;
+}
+
+.col-md-6 {
+  padding: 1em;
+}
+
+.info {
+  font-size: 21px;
+  padding: 1.5rem;
+  color: #fff;
+}
+
+h3 {
+  padding: 1.5rem;
+}
+
+#display-results {
+  font-size: 21px;
+  font-weight: 500;
+  padding-bottom: 0.5em;
+}
+
 .calculator {
   background-image: linear-gradient(200deg, #dfdfdf, #3d3d3d 75%);
   border: 1px solid #ccc;
   border-radius: 5px;
   padding-top: 20px;
-  width: 400px;
+  width: 350px;
   font-family: "Orbitron", sans-serif;
 }
 .calculator .calc-screen {
@@ -67,7 +95,7 @@ button:hover {
 }
 
 .equal {
-  grid-row: 3/6;
+  grid-row: 2/6;
   grid-column: 4/5;
   height: 100%;
   background-color: #333;
