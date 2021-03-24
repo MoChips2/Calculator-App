@@ -8,17 +8,11 @@ const io = socketio(server);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-let count = 0;
 // runs when client connects
 io.on('connection', socket => {
   //Receives equation data and sends back to client
   socket.on('equation', equ => {
-    
-    if (count < 10) {
     io.emit('displayEq', equ);
-    }
-    count++;
-    console.log(count);
   })
 
 });

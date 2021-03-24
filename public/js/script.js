@@ -10,4 +10,5 @@ socket.on('displayEq', res => {
   para.appendChild(node);
   const el = document.getElementById("display-results");
   el.insertBefore(para, el.firstChild);
+  el.removeChild(el.childNodes[10]);
 })

@@ -74,11 +74,8 @@ if (username != null) {
 }
 
 function emitEquation() {
-  if (count < 10) {
     socket.emit('equation', { username, inputValues, fixedNum });
   }
-  count++;
-}
 
 function calculate() {
   const { firstNum, operator, secondNum } = inputValues;
