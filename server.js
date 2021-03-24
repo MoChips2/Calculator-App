@@ -2,7 +2,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
-
+const { generateUser, getCurrentUser } = require('./public/js/user');
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
@@ -11,9 +11,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // runs when client connects
 io.on('connection', socket => {
+  socket.on('user', (username) => {
+    const user = generateUser(socket.id, username);
+    console.log(user);
+    let userName = getCurrentUser(socket.id);
+    io.emit('getUser', (userName));
+  });
+
+  console.log(socket.id);
+  //Receives equation data and sends back to client
   socket.on('equation', equ => {
     io.emit('displayEq', equ);
   })
+
 });
 
 
